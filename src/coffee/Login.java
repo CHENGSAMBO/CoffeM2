@@ -14,7 +14,6 @@ public class Login {
     private final JPanel mainPanel;
     private final CardLayout cardLayout;
     private JPanel loginPanel, registerPanel;
-   private String LoginName;
 
     // In-memory user storage
     private final String USERS_FILE = "D:\\netbean\\Coffee\\src\\coffee\\user_data.txt";
