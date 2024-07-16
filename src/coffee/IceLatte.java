@@ -9,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -381,6 +384,19 @@ public class IceLatte extends JFrame implements ActionListener ,MouseListener{
 			TextIce=little.getText();
 		}
                if(e.getSource()==Order) {
+                   System.out.print("Data input in file.");
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\netbean\\Coffee\\src\\coffee\\order.txt", true))) {
+                writer.write("Order Details:\t");
+                writer.write("Drink: " + LatteText.getText() + "\t");
+                writer.write("Size: " + TextSize + "\t");
+                writer.write("Sugar: " + Textsuger + "\t");
+                writer.write("Ice: " + TextIce + "\t");
+                writer.write("Quantity: " + Qty.getText() + "\t");
+                writer.write("Total Payment: $" + mony.getText() + "\t");
+                writer.write("--------------\n");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
 			new ABA(mony.getText(),TextSize,Textsuger,TextIce,LatteText.getText(),String.valueOf(size),Qty.getText());
                         dispose();
                }

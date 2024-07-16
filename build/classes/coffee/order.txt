@@ -1,0 +1,4 @@
+Order Details:	Drink: Ice Latte	Size: Medium	Sugar: 50%	Ice: Outside	Quantity: 3	Total Payment: $6.0	--------------
+Order Details:	Drink: Ice Latte	Size: Medium	Sugar: 20%	Ice: Inside	Quantity: 6	Total Payment: $12.0	--------------
+Order Details:	Drink: Mocha	Size: large	Sugar: 70%	Ice: little	Quantity: 4	Total Payment: $10.0	--------------
+Order Details:	Drink: Strawberry	Size: Medium	Sugar: 50%	Ice: Outside	Quantity: 3	Total Payment: $6.0	--------------

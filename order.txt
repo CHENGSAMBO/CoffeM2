@@ -1,0 +1,6 @@
+Order Details:	Drink: Ice Latte	Size: Medium	Sugar: 50%	Ice: Outside	Quantity: 3	Total Payment: $6.0	--------------
+Order Details:	Drink: Mocha	Size: Medium	Sugar: 50%	Ice: Outside	Quantity: 4	Total Payment: $8.0	--------------
+Order Details:	Drink: Americano	Size: large	Sugar: 70%	Ice: little	Quantity: 1	Total Payment: $2.5	--------------
+Order Details:	Drink: Strawberry	Size: large	Sugar: 70%	Ice: little	Quantity: 1	Total Payment: $2.5	--------------
+Order Details:	Drink: Capucino	Size: large	Sugar: 70%	Ice: Outside	Quantity: 4	Total Payment: $10.0	--------------
+Order Details:	Drink: Espresso	Size: large	Sugar: 70%	Ice: little	Quantity: 4	Total Payment: $10.0	--------------

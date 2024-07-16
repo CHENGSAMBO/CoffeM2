@@ -13,6 +13,9 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -363,10 +366,24 @@ public class Americano extends JFrame implements ActionListener{
 		if(e.getSource()==little) {
 			TextIce=little.getText();
 		}
-                 if(e.getSource()==Order){
-                    new ABA(mony.getText(),TextSize,Textsuger,TextIce,AmericanoText.getText(),String.valueOf(size),Qty.getText());
-                    dispose();
-                 }
+                 if (e.getSource() == Order) {
+            System.out.print("Data input in file.");
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\netbean\\Coffee\\src\\coffee\\order.txt", true))) {
+                writer.write("Order Details:\t");
+                writer.write("Drink: " + AmericanoText.getText() + "\t");
+                writer.write("Size: " + TextSize + "\t");
+                writer.write("Sugar: " + Textsuger + "\t");
+                writer.write("Ice: " + TextIce + "\t");
+                writer.write("Quantity: " + Qty.getText() + "\t");
+                writer.write("Total Payment: $" + mony.getText() + "\t");
+                writer.write("--------------\n");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+            // Optionally, create a new ABA object or dispose of the current window
+             new ABA(mony.getText(), TextSize, Textsuger, TextIce, AmericanoText.getText(), String.valueOf(size), Qty.getText());
+            dispose();
+        }
 	}
         static class RoundedBorder extends AbstractBorder {
         private int radius;
@@ -397,5 +414,3 @@ public class Americano extends JFrame implements ActionListener{
             
 
 }
-
-
