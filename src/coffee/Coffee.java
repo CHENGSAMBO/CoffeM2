@@ -10,16 +10,28 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 public class Coffee extends JFrame implements ActionListener,MouseListener{
 	JButton Icelatte,Mocha,Amaricano,Espresso,Capucino,Strawbery,show;
-	Coffee(){
+        JTextField jtxName;
+	Coffee(String nameAcc){           
 		this.setTitle("Coffee");
 		this.setSize(1700, 900);
 		this.setLayout(null);
 		this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);          //close form 
 		this.setVisible(true);
+                
+                //name Account
+                jtxName=new JTextField("");
+		jtxName.setText(nameAcc);
+		jtxName.setBounds(1600, 10,100,50);
+		jtxName.setFont(new Font("Movie",Font.BOLD,20));
+		jtxName.setEditable(false);
+		jtxName.setBorder(null);
+		jtxName.setBackground(new Color(225,225,225));
+		this.add(jtxName);
 		
 		//logo
 		JLabel logo=new JLabel("Java Coffee");
@@ -62,7 +74,7 @@ public class Coffee extends JFrame implements ActionListener,MouseListener{
                 lbshow.setBackground(new Color(225,225,225));
                 lbshow.setFont(new Font("Sambo",Font.BOLD,20));
                 this.add(lbshow);
-                
+                               
                 show=new JButton();
 		show.setBounds(800, 150, 170, 270);
 		show.setBackground(Color.gray);
@@ -177,7 +189,7 @@ public class Coffee extends JFrame implements ActionListener,MouseListener{
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		new Coffee();
+		new Coffee("sambo");
 	}
 
 	@Override

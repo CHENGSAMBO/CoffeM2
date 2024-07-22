@@ -1,9 +1,4 @@
 package coffee;
-
-
-
-
-
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Font;
@@ -360,20 +355,19 @@ public class Capucino extends JFrame implements ActionListener{
 		}
                if(e.getSource()==Order) {
                    System.out.print("Data input in file.");
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\netbean\\Coffee\\src\\coffee\\order.txt", true))) {
-                writer.write("Order Details:\t");
-                writer.write("Drink: " + CapucinoText.getText() + "\t");
-                writer.write("Size: " + TextSize + "\t");
-                writer.write("Sugar: " + Textsuger + "\t");
-                writer.write("Ice: " + TextIce + "\t");
-                writer.write("Quantity: " + Qty.getText() + "\t");
-                writer.write("Total Payment: $" + mony.getText() + "\t");
-                writer.write("--------------\n");
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-			new ABA(mony.getText(),TextSize,Textsuger,TextIce,CapucinoText.getText(),String.valueOf(size),Qty.getText());
-                        dispose();
+                   try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\netbean\\Coffee\\src\\coffee\\order.txt", true))) {
+                        writer.write("Order Details:\t");
+                        writer.write("Drink: " + CapucinoText.getText() + "\t");
+                        writer.write("Size: " + TextSize + "\t");
+                        writer.write("Sugar: " + Textsuger + "\t");
+                        writer.write("Ice: " + TextIce + "\t");
+                        writer.write("Quantity: " + Qty.getText() + "\t");
+                        writer.write("Total Payment: $" + mony.getText() + "\n");
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                    new ABA(mony.getText(),TextSize,Textsuger,TextIce,CapucinoText.getText(),String.valueOf(size),Qty.getText());
+                    dispose();
                }
 	}
 }

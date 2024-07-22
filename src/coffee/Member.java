@@ -7,12 +7,15 @@ import javax.swing.*;
 import javax.swing.JLabel;
 import javax.swing.border.AbstractBorder;
 import java.awt.geom.RoundRectangle2D;
+import java.util.Random;
 
 public class Member extends JFrame implements ActionListener,MouseListener{
  
     JLabel picture,Text;
     ButtonGroup group;
-    String selection,text;;
+    String selection,text;
+    JButton randomButton;
+    Random random;
     JRadioButton sambo,sovanet,vichhia,pordin,vangtong,meyseang,mengchou,mengseang;
     public Member(){
     ImageIcon img=new ImageIcon("A Little Coffee.jpeg"); 
@@ -25,10 +28,12 @@ public class Member extends JFrame implements ActionListener,MouseListener{
     this.setResizable(false);
     this.setIconImage(img.getImage());
     
+    random = new Random();
+
     //title
     JLabel logo=new JLabel("Information of Member");
     logo.setBounds(200,10 , 500, 50);
-    logo.setFont(new Font("Ink free",Font.BOLD,30));
+    logo.setFont(new Font("sambo",Font.BOLD,30));
     this.add(logo);
 
     
@@ -138,71 +143,99 @@ public class Member extends JFrame implements ActionListener,MouseListener{
         Text.setBounds(170, 260, 600, 50);
         this.add(Text);
         Text.setFont(new Font("sambo",Font.BOLD,30));
+        // Random Button
+        randomButton = new JButton("Random Member");
+        randomButton.setFocusable(false);
+        randomButton.setBounds(300, 320, 170, 30);
+        randomButton.setFont(new Font("Candara", Font.BOLD, 15));
+        randomButton.addActionListener(this);
+        this.add(randomButton);
         
         
-    }
-    static class RoundedBorder extends AbstractBorder {
-        private int radius;
-
-        RoundedBorder(int radius) {
-            this.radius = radius;
-        }
-
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            super.paintBorder(c, g, x, y, width, height);
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g2d.draw(new RoundRectangle2D.Double(x, y, width - 1, height - 1, radius, radius));
-        }
-
-        public Insets getBorderInsets(Component c) {
-            return new Insets(this.radius+1, this.radius+1, this.radius+2, this.radius);
-        }
-
-        public Insets getBorderInsets(Component c, Insets insets) {
-            insets.left = this.radius+1;
-            insets.right = this.radius+1;
-            insets.top = this.radius+1;
-            insets.bottom = this.radius+2;
-            return insets;
-        }
     }
     public static void main(String args[]){
         new Member();
     }
     @Override
     public void actionPerformed(ActionEvent e){
-        if(sambo.isSelected()){
-    	selection="C:/Users/SAMBO/Pictures/Saved Pictures/sambo-1.jpg";
-        text="Chneg Sambo   19    Male  leader";
-	}else if(sovanet.isSelected()){
-           selection="C:/Users/SAMBO/Pictures/Saved Pictures/sovanet.jpg";
-           text="Hout Sovanet   20  Male    Member";
-        }else if(vichhia.isSelected()){
-           selection="C:/Users/SAMBO/Pictures/Saved Pictures/vichhia.jpg";
-           text="Chhorn Vichhia 19  Male    Member";
-        }else if(pordin.isSelected()){
-           selection="C:/Users/SAMBO/Pictures/Saved Pictures/pordin.jpg";
-           text="Chheap Pordin     20  Male    Member";
-        }else if(vangtong.isSelected()){
-           selection="C:/Users/SAMBO/Pictures/Saved Pictures/vanthong.jpg";  
-           text="Chav Vanthong   20  Male    Member";
-        }else if(mengchou.isSelected()){
-           selection="C:/Users/SAMBO/Pictures/Saved Pictures/mengchou.jpg";  
-           text="Chhun Mengchou 20  Male    Member";
-        }else if(mengseang.isSelected()){
-           selection="C:/Users/SAMBO/Pictures/Saved Pictures/mengseang.jpg"; 
-           text="Souy Mengseang 20  Male    Member";
-        }else if(meyseang.isSelected()){
-           selection="C:/Users/SAMBO/Pictures/Saved Pictures/meyseang.jpg"; 
-           text="Chea Meyseang  20  Male    Memeber";
-        }else{
-           selection="";
-           text="";
+        if (e.getSource() == randomButton) {
+            randomSelection();
+        } else {
+            if(sambo.isSelected()){
+            selection="C:/Users/SAMBO/Pictures/Saved Pictures/sambo-1.jpg";
+            text="Chneg Sambo   19    Male  leader";
+            }else if(sovanet.isSelected()){
+               selection="C:/Users/SAMBO/Pictures/Saved Pictures/sovanet.jpg";
+               text="Hout Sovanet   20  Male    Member";
+            }else if(vichhia.isSelected()){
+               selection="C:/Users/SAMBO/Pictures/Saved Pictures/vichhia.jpg";
+               text="Chhorn Vichhia 19  Male    Member";
+            }else if(pordin.isSelected()){
+               selection="C:/Users/SAMBO/Pictures/Saved Pictures/pordin.jpg";
+               text="Chheap Pordin     20  Male    Member";
+            }else if(vangtong.isSelected()){
+               selection="C:/Users/SAMBO/Pictures/Saved Pictures/vanthong.jpg";  
+               text="Chav Vanthong   20  Male    Member";
+            }else if(mengchou.isSelected()){
+               selection="C:/Users/SAMBO/Pictures/Saved Pictures/mengchou.jpg";  
+               text="Chhun Mengchou 20  Male    Member";
+            }else if(mengseang.isSelected()){
+               selection="C:/Users/SAMBO/Pictures/Saved Pictures/mengseang.jpg"; 
+               text="Souy Mengseang 20  Male    Member";
+            }else if(meyseang.isSelected()){
+               selection="C:/Users/SAMBO/Pictures/Saved Pictures/meyseang.jpg"; 
+               text="Chea Meyseang  20  Male    Memeber";
+            }else{
+               selection="";
+               text="";
+            }
+            picture.setIcon(new ImageIcon(selection));
+            Text.setText(text);
+            }
+        }
+    private void randomSelection() {
+        int rand = random.nextInt(8); // There are 8 members
+        switch (rand) {
+            case 0:
+                selection = "C:/Users/SAMBO/Pictures/Saved Pictures/sambo-1.jpg";
+                text = "Chneg Sambo   19    Male  leader";
+                break;
+            case 1:
+                selection = "C:/Users/SAMBO/Pictures/Saved Pictures/sovanet.jpg";
+                text = "Hout Sovanet   20  Male    Member";
+                break;
+            case 2:
+                selection = "C:/Users/SAMBO/Pictures/Saved Pictures/vichhia.jpg";
+                text = "Chhorn Vichhia 19  Male    Member";
+                break;
+            case 3:
+                selection = "C:/Users/SAMBO/Pictures/Saved Pictures/pordin.jpg";
+                text = "Chheap Pordin     20  Male    Member";
+                break;
+            case 4:
+                selection = "C:/Users/SAMBO/Pictures/Saved Pictures/vanthong.jpg";
+                text = "Chav Vanthong   20  Male    Member";
+                break;
+            case 5:
+                selection = "C:/Users/SAMBO/Pictures/Saved Pictures/mengchou.jpg";
+                text = "Chhun Mengchou 20  Male    Member";
+                break;
+            case 6:
+                selection = "C:/Users/SAMBO/Pictures/Saved Pictures/mengseang.jpg";
+                text = "Souy Mengseang 20  Male    Member";
+                break;
+            case 7:
+                selection = "C:/Users/SAMBO/Pictures/Saved Pictures/meyseang.jpg";
+                text = "Chea Meyseang  20  Male    Member";
+                break;
+            default:
+                selection = "";
+                text = "";
+                break;
         }
         picture.setIcon(new ImageIcon(selection));
         Text.setText(text);
-    }
+        }
     @Override
     public void mouseExited(MouseEvent e) {
             

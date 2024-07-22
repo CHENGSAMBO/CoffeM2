@@ -40,17 +40,17 @@ public class Login {
 
     private void createLoginPanel() {
         loginPanel = new JPanel(null);
-
-        ImageIcon originalImg = new ImageIcon("6 Reasons To Add Coffee To Your Haircare Routine - Beauty Epic.png");
-        Image img = originalImg.getImage();
+        //small image
+        ImageIcon infrontImg = new ImageIcon("6 Reasons To Add Coffee To Your Haircare Routine - Beauty Epic.png");
+        Image img = infrontImg.getImage();
         Image resizedImg = img.getScaledInstance(400, 600, Image.SCALE_SMOOTH); // Resize to 200x200 pixels
         ImageIcon resizedIcon = new ImageIcon(resizedImg);
         JLabel imageLabel = new JLabel(resizedIcon);
         imageLabel.setBounds(200,100, resizedIcon.getIconWidth(), resizedIcon.getIconHeight());
         
-        
-	ImageIcon originalImg1 = new ImageIcon("Premium Photo _ Cup of coffee and scoop on brown background_ Top view copy space .png");
-        Image img1 = originalImg1.getImage();
+        // big image
+	ImageIcon behindImg = new ImageIcon("Premium Photo _ Cup of coffee and scoop on brown background_ Top view copy space .png");
+        Image img1 = behindImg.getImage();
         Image resizedImg1 = img1.getScaledInstance(1540, 820, Image.SCALE_SMOOTH); // Resize to 200x200 pixels
         ImageIcon resizedIcon1 = new ImageIcon(resizedImg1);
         JLabel imageLabel1 = new JLabel(resizedIcon1);
@@ -84,17 +84,17 @@ public class Login {
         JPasswordField txtPassword = new JPasswordField();
 
         // Load and resize the eye icons
-        ImageIcon viewIcon = new ImageIcon("D:\\Database\\Phone-Shop-Management-master\\src\\rupp\\icon\\hide.png");                                                                                                  // // here
-        Image viewImg = viewIcon.getImage();
-        Image resizedViewImg = viewImg.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-        ImageIcon resizedViewIcon = new ImageIcon(resizedViewImg);
-        ImageIcon hideIcon = new ImageIcon("D:\\Database\\Phone-Shop-Management-master\\src\\rupp\\icon\\view.png");
+        ImageIcon hideIcon = new ImageIcon("D:\\netbean\\Coffee\\hide.png");                                                                                                
         Image hideImg = hideIcon.getImage();
         Image resizedHideImg = hideImg.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         ImageIcon resizedHideIcon = new ImageIcon(resizedHideImg);
+        ImageIcon viewIcon = new ImageIcon("D:\\netbean\\Coffee\\view.png");
+        Image viewImg = viewIcon.getImage();
+        Image resizedViewImg = viewImg.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        ImageIcon resizedViewIcon = new ImageIcon(resizedViewImg);
 
         // Eye icon button to toggle password visibility
-        JButton btnTogglePassword = new JButton(resizedViewIcon); // Start with the view icon
+        JButton btnTogglePassword = new JButton(resizedHideIcon); // Start with the view icon
         btnTogglePassword.setBounds(1150, 350, 45, 45); // Adjust position as needed
         btnTogglePassword.setOpaque(false);
         btnTogglePassword.setContentAreaFilled(false);
@@ -104,12 +104,12 @@ public class Login {
         btnTogglePassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (txtPassword.getEchoChar() != '\u0000') {
+                if (txtPassword.getEchoChar() == '•') {
                     txtPassword.setEchoChar((char) 0);
-                    btnTogglePassword.setIcon(resizedHideIcon); // Switch to hide icon
+                    btnTogglePassword.setIcon(resizedViewIcon); // Switch to hide icon
                 } else {
                     txtPassword.setEchoChar('•');
-                    btnTogglePassword.setIcon(resizedViewIcon); // Switch to view icon
+                    btnTogglePassword.setIcon(resizedHideIcon); // Switch to view icon
                 }
             }
         });
@@ -168,7 +168,7 @@ public class Login {
                 String password = new String(txtPassword.getPassword());
                 if (users.containsKey(username) && users.get(username).equals(password)) {
                     frame.dispose(); // Close the login window
-                    new Coffee(); // Go to Fram Dashboard
+                    new Coffee(username); // Go to Fram Dashboard
                 } else {
                     JOptionPane.showMessageDialog(frame, "Invalid username or password", "Error",
                             JOptionPane.ERROR_MESSAGE);
@@ -179,9 +179,6 @@ public class Login {
         btnRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                if(txtUsername.getText()==null || txtPassword.getPassword()==null)
-//                      JOptionPane.showMessageDialog(null,"Check agian!");
-//                else
                     cardLayout.show(mainPanel, "Register");
             }
         });
@@ -201,15 +198,16 @@ public class Login {
         JPasswordField txtConfirmPassword = new JPasswordField();
         JButton btnRegister = new JButton("Register");
         JButton btnBack = new JButton("Back");
-        
-        ImageIcon originalImg = new ImageIcon("6 Reasons To Add Coffee To Your Haircare Routine - Beauty Epic.png");
-        Image img = originalImg.getImage();
+        // small 
+        ImageIcon infrontImg = new ImageIcon("6 Reasons To Add Coffee To Your Haircare Routine - Beauty Epic.png");
+        Image img = infrontImg.getImage();
         Image resizedImg = img.getScaledInstance(400, 600, Image.SCALE_SMOOTH);
         ImageIcon resizedIcon = new ImageIcon(resizedImg);
         JLabel imageLabel = new JLabel(resizedIcon);
         imageLabel.setBounds(200, 100, resizedIcon.getIconWidth(), resizedIcon.getIconHeight());
-        ImageIcon originalImg1 = new ImageIcon("Premium Photo _ Cup of coffee and scoop on brown background_ Top view copy space .png");
-        Image img1 = originalImg1.getImage();
+        //big
+        ImageIcon behindImg = new ImageIcon("Premium Photo _ Cup of coffee and scoop on brown background_ Top view copy space .png");
+        Image img1 = behindImg.getImage();
         Image resizedImg1 = img1.getScaledInstance(1540, 820, Image.SCALE_SMOOTH); // Resize to 200x200 pixels
         ImageIcon resizedIcon1 = new ImageIcon(resizedImg1);
         JLabel imageLabel1 = new JLabel(resizedIcon1);
@@ -266,17 +264,17 @@ public class Login {
         btnBack.setFont(labelFont2);
 
         // Load and resize the eye icons
-        ImageIcon viewIcon = new ImageIcon("D:\\Database\\Phone-Shop-Management-master\\src\\rupp\\icon\\hide.png");                                                                                              // icon
-        Image viewImg = viewIcon.getImage();
-        Image resizedViewImg = viewImg.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-        ImageIcon resizedViewIcon = new ImageIcon(resizedViewImg);
-        ImageIcon hideIcon = new ImageIcon("D:\\Database\\Phone-Shop-Management-master\\src\\rupp\\icon\\view.png"); 
+        ImageIcon hideIcon = new ImageIcon("D:\\netbean\\Coffee\\hide.png");                                                                                              // icon
         Image hideImg = hideIcon.getImage();
         Image resizedHideImg = hideImg.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         ImageIcon resizedHideIcon = new ImageIcon(resizedHideImg);
+        ImageIcon viewIcon = new ImageIcon("D:\\netbean\\Coffee\\view.png"); 
+        Image viewImg = viewIcon.getImage();
+        Image resizedViewImg = viewImg.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        ImageIcon resizedViewIcon = new ImageIcon(resizedViewImg);
 
         // Eye icon button for New Password field
-        JButton btnToggleNewPassword = new JButton(resizedViewIcon); // Start with the view icon
+        JButton btnToggleNewPassword = new JButton(resizedHideIcon); // Start with the view icon
         btnToggleNewPassword.setBounds(1250, 295, 45, 45); // Adjust position as needed
         btnToggleNewPassword.setOpaque(false);
         btnToggleNewPassword.setContentAreaFilled(false);
@@ -286,18 +284,18 @@ public class Login {
         btnToggleNewPassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (txtNewPassword.getEchoChar() != '\u0000') {
+                if (txtNewPassword.getEchoChar() == '•') {
                     txtNewPassword.setEchoChar((char) 0);
-                    btnToggleNewPassword.setIcon(resizedHideIcon); // Switch to hide icon
+                    btnToggleNewPassword.setIcon(resizedViewIcon); // Switch to hide icon
                 } else {
                     txtNewPassword.setEchoChar('•');
-                    btnToggleNewPassword.setIcon(resizedViewIcon); // Switch to view icon
+                    btnToggleNewPassword.setIcon(resizedHideIcon); // Switch to view icon
                 }
             }
         });
 
         // Eye icon button for Confirm Password field
-        JButton btnToggleConfirmPassword = new JButton(resizedViewIcon); // Start with the view icon
+        JButton btnToggleConfirmPassword = new JButton(resizedHideIcon); // Start with the view icon
         btnToggleConfirmPassword.setBounds(1250, 365, 45, 45); // Adjust position as needed
         btnToggleConfirmPassword.setOpaque(false);
         btnToggleConfirmPassword.setContentAreaFilled(false);
@@ -309,10 +307,10 @@ public class Login {
             public void actionPerformed(ActionEvent e) {
                 if (txtConfirmPassword.getEchoChar() != '\u0000') {
                     txtConfirmPassword.setEchoChar((char) 0);
-                    btnToggleConfirmPassword.setIcon(resizedHideIcon); // Switch to hide icon
+                    btnToggleConfirmPassword.setIcon(resizedViewIcon); // Switch to hide icon
                 } else {
                     txtConfirmPassword.setEchoChar('•');
-                    btnToggleConfirmPassword.setIcon(resizedViewIcon); // Switch to view icon
+                    btnToggleConfirmPassword.setIcon(resizedHideIcon); // Switch to view icon
                 }
             }
         });
@@ -349,7 +347,11 @@ public class Login {
                     JOptionPane.showMessageDialog(frame, "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);
                 } else if (users.containsKey(newUsername)) {
                     JOptionPane.showMessageDialog(frame, "Username already exists", "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
+                }
+//                else if (newUsername==null) {
+//                    JOptionPane.showMessageDialog(frame, "Pleace check agian.", "Error", JOptionPane.ERROR_MESSAGE);
+//                }
+                else {
                     users.put(newUsername, newPassword);
                     saveUserToFile(newUsername, newPassword);
                     JOptionPane.showMessageDialog(frame, "Registration successful", "Success",
@@ -358,7 +360,7 @@ public class Login {
                 }
             }
         });
-
+ 
         btnBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

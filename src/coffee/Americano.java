@@ -246,7 +246,6 @@ public class Americano extends JFrame implements ActionListener{
 		sum.setBackground(new Color(225,225,225));
 		sum.setFont(new Font("Movie",Font.BOLD,20));
 		sum.setBounds(150, 30, 50, 20);
-                sum.setBorder(new RoundedBorder(10));
 		sum.addActionListener(this);
 		panelresult.add(sum);
 		
@@ -256,7 +255,6 @@ public class Americano extends JFrame implements ActionListener{
 		Minus.setBackground(new Color(225,225,225));
 		Minus.setFont(new Font("Movie",Font.BOLD,20));
 		Minus.setBounds(10, 30, 50, 20);
-                Minus.setBorder(new RoundedBorder(10)); 
 		Minus.addActionListener(this);
 		panelresult.add(Minus);
 		
@@ -275,10 +273,6 @@ public class Americano extends JFrame implements ActionListener{
 		Order.setBackground(new Color(225,225,225));
 		Order.setFont(new Font("Movie",Font.BOLD,20));
 		Order.setBounds(450, 10, 100, 50);
-                Order.setBorder(new RoundedBorder(20));
-                Order.setOpaque(false);
-                Order.setContentAreaFilled(false);
-                Order.setFocusPainted(false);
                 Order.addActionListener(this);
 		panelresult.add(Order);
 		
@@ -367,50 +361,21 @@ public class Americano extends JFrame implements ActionListener{
 			TextIce=little.getText();
 		}
                  if (e.getSource() == Order) {
-            System.out.print("Data input in file.");
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\netbean\\Coffee\\src\\coffee\\order.txt", true))) {
-                writer.write("Order Details:\t");
-                writer.write("Drink: " + AmericanoText.getText() + "\t");
-                writer.write("Size: " + TextSize + "\t");
-                writer.write("Sugar: " + Textsuger + "\t");
-                writer.write("Ice: " + TextIce + "\t");
-                writer.write("Quantity: " + Qty.getText() + "\t");
-                writer.write("Total Payment: $" + mony.getText() + "\t");
-                writer.write("--------------\n");
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
+                    System.out.print("Data input in file.");
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\netbean\\Coffee\\src\\coffee\\order.txt", true))) {
+                        writer.write("Order Details:\t");
+                        writer.write("Drink: " + AmericanoText.getText() + "\t");
+                        writer.write("Size: " + TextSize + "\t");
+                        writer.write("Sugar: " + Textsuger + "\t");
+                        writer.write("Ice: " + TextIce + "\t");
+                        writer.write("Quantity: " + Qty.getText() + "\t");
+                        writer.write("Total Payment: $" + mony.getText() + "\n");
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                    // Optionally, create a new ABA object or dispose of the current window
+                    new ABA(mony.getText(), TextSize, Textsuger, TextIce, AmericanoText.getText(), String.valueOf(size), Qty.getText());
+                    dispose();
+                }
             }
-            // Optionally, create a new ABA object or dispose of the current window
-             new ABA(mony.getText(), TextSize, Textsuger, TextIce, AmericanoText.getText(), String.valueOf(size), Qty.getText());
-            dispose();
-        }
-	}
-        static class RoundedBorder extends AbstractBorder {
-        private int radius;
-
-        RoundedBorder(int radius) {
-            this.radius = radius;
-        }
-
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            super.paintBorder(c, g, x, y, width, height);
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-            g2d.draw(new RoundRectangle2D.Double(x, y, width - 1, height - 1, radius, radius));
-        }
-
-        public Insets getBorderInsets(Component c) {
-            return new Insets(this.radius+1, this.radius+1, this.radius+2, this.radius);
-        }
-
-        public Insets getBorderInsets(Component c, Insets insets) {
-            insets.left = this.radius+1;
-            insets.right = this.radius+1;
-            insets.top = this.radius+1;
-            insets.bottom = this.radius+2;
-            return insets;
-        }
-    }
-            
-
 }
